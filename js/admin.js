@@ -1,13 +1,17 @@
 jQuery(document).ready( function($){
 	
 	var mediaUploader;
+
 	
 	$('#upload-photo').on('click',function(e) {
+
 		e.preventDefault();
 		if( mediaUploader ){
 			mediaUploader.open();
+
 			return;
 		}
+
 		
 		mediaUploader = wp.media.frames.file_frame = wp.media({
 			title: 'Choose a Profile Picture',
@@ -20,7 +24,8 @@ jQuery(document).ready( function($){
 		mediaUploader.on('select', function(){
 			attachment = mediaUploader.state().get('selection').first().toJSON();
 			$('#profile-picture').val(attachment.url);
-			$('#profile-picture-preview').css('background-image','url(' + attachment.url + ')');
+			console.log(attachment.url);
+            $('#profile-picture-preview').attr("src", `${attachment.url}`);
 		});
 		
 		mediaUploader.open();
@@ -32,24 +37,14 @@ jQuery(document).ready( function($){
 		var answer=confirm("Are you sure you want to remove your photo ?");
 		if(answer==true){
 			$('#profile-picture').val('');
+            $('#profile-picture-preview').attr("src", "");
+            $('#profile-picture-preview').attr("alt", "User Image");
+
 		}
 		return ;
 	});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-	
 });
 
 

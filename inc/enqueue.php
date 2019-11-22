@@ -9,8 +9,9 @@
 	========================
 */
 
-function sunlight_load_admin_script( $hook ){
-	//echo $hook;
+function sunlight_load_admin_script( $hook){
+
+    //var_dump($hook);
 
 	// for different admin page css
 
@@ -18,18 +19,11 @@ function sunlight_load_admin_script( $hook ){
 		return ;
 	}
 
-	wp_register_style( 'sunlight_admin', get_template_directory_uri().'/css/admin.css',  array(), '1.0', $media = 'all' );
-
-	wp_enqueue_style( 'sunlight_admin' );
-
+	wp_enqueue_style('sunlight_admin', get_template_directory_uri().'/css/admin.css',  array(), '1.0', $media = 'all');
 
 	wp_enqueue_media();
 
-	wp_register_script( 'admin_script', get_template_directory_uri().'/js/admin.js',array('jquery'), '1.0.0',  true );
-
-	wp_enqueue_script( 'admin_script' );
-
-
+	wp_enqueue_script('admin_script', get_template_directory_uri().'/js/admin.js',array('jquery'), '1.0.0',  true);
 
 
 }

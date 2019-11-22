@@ -12,67 +12,60 @@
 function sunlight_add_admin_page() {
 	
 	//Generate sunlight Admin Page
-	add_menu_page( 'sunlight Theme Options', 'sunlight', 'manage_options', 'alecaddd_sunlight', 'sunlight_theme_create_page','dashicons-hammer', 110 );
+	add_menu_page( 'sunlight Theme Options', 'Sunlight', 'manage_options', 'alecaddd_sunlight', 'sunlight_theme_create_page','dashicons-hammer', 110 );
 
 	//Generate sunlight Admin Sub Pages
-	add_submenu_page( 'alecaddd_sunlight', 'sunlight Theme Options', 'General', 'manage_options', 'alecaddd_sunlight', 'sunlight_theme_create_page');
+	add_submenu_page( 'alecaddd_sunlight', 'sunlight Theme Options', 'Settings', 'manage_options', 'alecaddd_sunlight', 'sunlight_theme_create_page');
 
 	//Theme Support parent subment
 	add_submenu_page( 'alecaddd_sunlight', 'Theme Supports', 'Support', 'manage_options', 'theme-support-options','my_theme_support' );
 
 	//Generate sunlight Admin Sub Pages
-	add_submenu_page( 'alecaddd_sunlight', 'sunlight CSS Options', 'Custom CSS', 'manage_options', 'alecaddd_sunlight_css', 'sunlight_theme_settings_page');	
+	add_submenu_page( 'alecaddd_sunlight', 'sunlight CSS Options', 'Custom CSS', 'manage_options', 'alecaddd_sunlight_css', 'sunlight_theme_settings_page');
+
+    //Activate custom settings
+    add_action( 'admin_init', 'sunlight_custom_settings' );
 }
 
 add_action( 'admin_menu', 'sunlight_add_admin_page' );
 
-//Activate custom settings
+
 
 
 function sunlight_custom_settings() {
+    //My theme General Setting Group
+    register_setting( 'sunlight-settings-group', 'profile_image' );
+    register_setting( 'sunlight-settings-group', 'first_name' );
+    register_setting( 'sunlight-settings-group', 'last_name' );
+    register_setting( 'sunlight-settings-group', 'user_description' );
+    register_setting( 'sunlight-settings-group', 'twitter','sanitize_twitter' );
+    register_setting( 'sunlight-settings-group', 'facebook' );
+    register_setting( 'sunlight-settings-group', 'google_plus' );
 
+    // theme General Setting Section
+    add_settings_section( 'sunlight-sidebar-options', 'Sidebar Option', 'sunlight_sidebar_options', 'alecaddd_sunlight');
 
+    // theme General Setting Fields
 
-	//My theme General Setting Group
-	register_setting( 'sunlight-settings-group', 'profile_image' );
-	register_setting( 'sunlight-settings-group', 'first_name' );
-	register_setting( 'sunlight-settings-group', 'last_name' );
-	register_setting( 'sunlight-settings-group', 'user_description' );
-	register_setting( 'sunlight-settings-group', 'twitter','sanitize_twitter' );
-	register_setting( 'sunlight-settings-group', 'facebook' );
-	register_setting( 'sunlight-settings-group', 'google_plus' );
+    add_settings_field( 'sidebar-profile', 'Profile Picture ', 'sunlight_sidebar_profile', 'alecaddd_sunlight', 'sunlight-sidebar-options');
+    add_settings_field( 'sidebar-name', 'Full Name', 'sunlight_sidebar_name', 'alecaddd_sunlight', 'sunlight-sidebar-options');
+    add_settings_field( 'sidebar-desc', 'Descripton', 'sunlight_sidebar_description', 'alecaddd_sunlight', 'sunlight-sidebar-options');
+    add_settings_field( 'sidebar-twitter', 'Twitter Profile', 'sunlight_sidebar_twitter', 'alecaddd_sunlight', 'sunlight-sidebar-options');
+    add_settings_field( 'sidebar-facebook', 'Facebook Profile', 'sunlight_sidebar_facebook', 'alecaddd_sunlight', 'sunlight-sidebar-options');
+    add_settings_field( 'sidebar-google-plus', 'Google Plus Profile', 'sunlight_sidebar_goolge_plus', 'alecaddd_sunlight', 'sunlight-sidebar-options');
 
-	// theme General Setting Section
-	add_settings_section( 'sunlight-sidebar-options', 'Sidebar Option', 'sunlight_sidebar_options', 'alecaddd_sunlight');
+    //my theme support setting groupsunlight_sidebar_options
+    register_setting( 'theme-support', 'post_format' );
 
-	// theme General Setting Fields
-	add_settings_field( 'sidebar-profile', 'Profile Picture ', 'sunlight_sidebar_profile', 'alecaddd_sunlight', 'sunlight-sidebar-options');
-	add_settings_field( 'sidebar-name', 'Full Name', 'sunlight_sidebar_name', 'alecaddd_sunlight', 'sunlight-sidebar-options');
-	add_settings_field( 'sidebar-desc', 'Descripton', 'sunlight_sidebar_description', 'alecaddd_sunlight', 'sunlight-sidebar-options');
-	add_settings_field( 'sidebar-twitter', 'Twitter Profile', 'sunlight_sidebar_twitter', 'alecaddd_sunlight', 'sunlight-sidebar-options');
-	add_settings_field( 'sidebar-facebook', 'Facebook Profile', 'sunlight_sidebar_facebook', 'alecaddd_sunlight', 'sunlight-sidebar-options');
-	add_settings_field( 'sidebar-google-plus', 'Google Plus Profile', 'sunlight_sidebar_goolge_plus', 'alecaddd_sunlight', 'sunlight-sidebar-options');
+    // My theme Support Section
+    add_settings_section( 'section_theme_support', 'Customize Your Support Options', 'theme_support_section_cb', 'theme-support-options' );
 
-
-
-
-
-	//my theme support setting group
-	register_setting( 'theme-support', 'post_format' );
-
-	// My theme Support Section 
-	add_settings_section( 'section_theme_support', 'Customize Your Support Options', 'theme_support_section_cb', 'theme-support-options' );
-
-	// theme Support Setting Fields
-	add_settings_field( 'post-formats', 'Post Formats', 'theme_post_format', 'theme-support-options', 'section_theme_support');
+    // theme Support Setting Fields
+    add_settings_field( 'post-formats', 'Post Formats', 'theme_post_format', 'theme-support-options', 'section_theme_support');
 
 
 
 }
-add_action( 'admin_init', 'sunlight_custom_settings' );
-
-
-
 
 
 //Theme Support section callback function 
@@ -93,15 +86,10 @@ function theme_post_format(){
 
 }
 
-
-
-
-
 // General Setting section callback function 
 function sunlight_sidebar_options() {
 	echo 'Customize your Sidebar Information';
 }
-
 
 
 function sunlight_sidebar_profile(){
@@ -136,6 +124,7 @@ function sunlight_sidebar_name() {
 		  <input type="text" name="last_name" value="'.$lastName.'" placeholder="Last Name" />
 	';
 }
+
 function sunlight_sidebar_description(){
 	$descriptoin=esc_attr( get_option( 'user_description' ) );
 	echo '<textarea rows="3" cols="50" name="user_description" placeholder="Write about you" >'.$descriptoin.'</textarea>
@@ -147,6 +136,7 @@ function sunlight_sidebar_twitter(){
 	echo '<input type="text" value="'.$twitter_link.'" name="twitter" placeholder="Twitter profile link">
 	<p>Input the Twtter name without @ Charecter</p>';
 }
+
 function sunlight_sidebar_facebook(){
 	$facebook_pro= esc_attr(get_option( 'facebook' ));
 	echo '<input type="text" name="facebook" value="'.$facebook_pro.'" placeholder="Facebook profile link">';
@@ -170,9 +160,6 @@ function sanitize_twitter($input){
 
 
 }
-
-
-
 
 
 /*Menu & Submenu Callback Functions  */

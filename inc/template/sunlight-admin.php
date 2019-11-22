@@ -16,10 +16,14 @@
 	 ?>
 <div class="sunlight-user-preview">
 	<div class="profile">
-		<img id="profile-picture-preview"  src="<?php echo $profile; ?>">
+		<img id="profile-picture-preview"  src="<?php echo $profile; ?>" alt="User Image">
 	</div>
-	<div class="sunlight-user"><h1><?php echo $fullName ?></h1></div>
-	<div class="sunlight-desc"><h2><?php echo $descriptoin ?></h2></div>
+	<div class="sunlight-user">
+        <h1><?php echo $fullName ?></h1>
+    </div>
+	<div class="sunlight-desc">
+        <h2><?php echo $descriptoin ?></h2>
+    </div>
 </div>
 
 
