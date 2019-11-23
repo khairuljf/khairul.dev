@@ -17,7 +17,7 @@ function sunlight_add_admin_page() {
 	//Generate sunlight Admin Sub Pages
 	add_submenu_page( 'alecaddd_sunlight', 'sunlight Theme Options', 'Settings', 'manage_options', 'alecaddd_sunlight', 'sunlight_theme_create_page');
 
-	//Theme Support parent subment
+	//Theme Support parent submenu
 	add_submenu_page( 'alecaddd_sunlight', 'Theme Supports', 'Support', 'manage_options', 'theme-support-options','my_theme_support' );
 
 	//Generate sunlight Admin Sub Pages
@@ -53,6 +53,7 @@ function sunlight_custom_settings() {
     add_settings_field( 'sidebar-twitter', 'Twitter Profile', 'sunlight_sidebar_twitter', 'alecaddd_sunlight', 'sunlight-sidebar-options');
     add_settings_field( 'sidebar-facebook', 'Facebook Profile', 'sunlight_sidebar_facebook', 'alecaddd_sunlight', 'sunlight-sidebar-options');
     add_settings_field( 'sidebar-google-plus', 'Google Plus Profile', 'sunlight_sidebar_goolge_plus', 'alecaddd_sunlight', 'sunlight-sidebar-options');
+
 
     //my theme support setting groupsunlight_sidebar_options
     register_setting( 'theme-support', 'post_format' );

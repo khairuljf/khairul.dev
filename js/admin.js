@@ -29,7 +29,7 @@ jQuery(document).ready( function($){
 		});
 		
 		mediaUploader.open();
-		
+
 	});
 
 	$('#remove-photo').on('click', function(e){
@@ -39,7 +39,6 @@ jQuery(document).ready( function($){
 			$('#profile-picture').val('');
             $('#profile-picture-preview').attr("src", "");
             $('#profile-picture-preview').attr("alt", "User Image");
-
 		}
 		return ;
 	});
