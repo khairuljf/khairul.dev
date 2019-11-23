@@ -35,7 +35,8 @@ jQuery(document).ready( function($){
 	$('#remove-photo').on('click', function(e){
 		e.preventDefault();
 		var answer=confirm("Are you sure you want to remove your photo ?");
-		if(answer==true){
+
+		if(answe){
 			$('#profile-picture').val('');
             $('#profile-picture-preview').attr("src", "");
             $('#profile-picture-preview').attr("alt", "User Image");

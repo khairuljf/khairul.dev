@@ -57,12 +57,16 @@ function sunlight_custom_settings() {
 
     //my theme support setting groupsunlight_sidebar_options
     register_setting( 'theme-support', 'post_format' );
+    register_setting('theme-support', 'custom_header');
+    register_setting('theme-support', 'custom_background');
 
     // My theme Support Section
     add_settings_section( 'section_theme_support', 'Customize Your Support Options', 'theme_support_section_cb', 'theme-support-options' );
 
     // theme Support Setting Fields
     add_settings_field( 'post-formats', 'Post Formats', 'theme_post_format', 'theme-support-options', 'section_theme_support');
+    add_settings_field('custom_header_support','Custom Header', 'custom_header_field_cb','theme-support-options','section_theme_support');
+    add_settings_field('custom_background', 'Custom background', 'custom_bg_cb', 'theme-support-options', 'section_theme_support');
 
 
 
@@ -80,16 +84,33 @@ function theme_post_format(){
 	$formats = array('aside', 'gallery', 'link', 'image', 'qoute', 'status', 'video', 'audio', 'chat');
 	$output='';
 	foreach ($formats as $format ) {
-		$checked = ( @$options[$format] == 1 ? 'checked' : '' );
+		$checked = ( @$options[$format] ? 'checked' : '' );
 		$output .='<label><input type="checkbox"  '.$checked.' name="post_format['.$format.']" value="1"> '.$format.' </label> <br> ';
 	}
 	echo $output;
 
 }
+//Theme Support custom header
+function custom_header_field_cb(){
+    $custom_bg = get_option('custom_background');
+    $checkded =  ($custom_bg? 'checked' : '');
+    echo '<label><input type="checkbox"  '.$checkded.'  name="custom_background" value="1"> Active custom Backgorund </label>';
+}
+
+// Theme support cusotm backgorund
+
+function custom_bg_cb(){
+    $custom_header = get_option('custom_header');
+    $checkded =  ($custom_header? 'checked' : '');
+    echo '<label><input type="checkbox"  '.$checkded.'  name="custom_header" value="1"> Active custom header </label>';
+}
 
 // General Setting section callback function 
 function sunlight_sidebar_options() {
 	echo 'Customize your Sidebar Information';
+}
+
+function custom_header_section_cb(){
 }
 
 

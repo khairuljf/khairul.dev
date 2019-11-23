@@ -31,8 +31,7 @@
 <form method="post" action="options.php" class="user-form">
 	<?php settings_fields( 'sunlight-settings-group' ); ?>
 	<?php do_settings_sections( 'alecaddd_sunlight' ); ?>
-
-	<?php submit_button(); ?>
+	<?php submit_button('Save Changes', 'primary', 'btnSubmit'); ?>
 </form>
 
 
