@@ -55,8 +55,6 @@ function sunlight_custom_settings() {
     add_settings_field( 'sidebar-twitter', 'Twitter Profile', 'sunlight_sidebar_twitter', 'alecaddd_sunlight', 'sunlight-sidebar-options');
     add_settings_field( 'sidebar-facebook', 'Facebook Profile', 'sunlight_sidebar_facebook', 'alecaddd_sunlight', 'sunlight-sidebar-options');
 
-
-
     //my theme support setting groupsunlight_sidebar_options
     register_setting( 'theme-support', 'post_format' );
     register_setting('theme-support', 'custom_header');
@@ -77,7 +75,6 @@ function sunlight_custom_settings() {
     add_settings_section('sunglit-contact-section','Active/ Deactive form','sunligt_contact_cb', 'sunlight-contact-form');
 
     add_settings_field('sunlight-contact-form','Contact Form', 'sunlight_contact_cb','sunlight-contact-form','sunglit-contact-section');
-
 
 
 }
