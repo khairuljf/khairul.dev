@@ -76,6 +76,13 @@ function sunlight_custom_settings() {
 
     add_settings_field('sunlight-contact-form','Contact Form', 'sunlight_contact_cb','sunlight-contact-form','sunglit-contact-section');
 
+    // custom css opton
+    register_setting('sunglit-custom-css-option', 'sunlight_css');
+
+    add_settings_section('sunlight-css-section', '', 'sunlight_custom_css_cb', 'alecaddd_sunlight_css');
+
+    add_settings_field('sunset-css-filed','Enter your own css','sunscet_css_field_cb', 'alecaddd_sunlight_css', 'sunlight-css-section');
+
 
 }
 
@@ -98,6 +105,10 @@ function custom_header_section_cb(){
 
 //Theme conact form  section callback function
 function sunligt_contact_cb(){
+}
+
+//custom css secon callback function
+function sunlight_custom_css_cb(){
 }
 
 
@@ -129,6 +140,15 @@ function custom_bg_cb(){
     $custom_header = get_option('custom_header');
     $checkded =  ($custom_header? 'checked' : '');
     echo '<label><input type="checkbox"  '.$checkded.'  name="custom_header" value="1"> Active custom header </label>';
+}
+
+// Cusotm css filed callback function
+function sunscet_css_field_cb(){
+    $custom_css = get_option('sunlight_css');
+    $custom_css =  ($custom_css? $custom_css : '/* Enter custom css */');
+
+    echo '<div id="customCss" style="position: relative; width: 500px; height: 500px;">'.$custom_css.'</div> <textarea id="sunlight_css" name="sunlight_css" style="display: none;visibility: hidden ">'.$custom_css.'</textarea>';
+
 }
 
 // Contact form field function
@@ -224,7 +244,24 @@ function my_theme_support(){
 
 // Css Callback function
 function sunlight_theme_settings_page() {
-	
-	echo '<h1>sunlight Custom CSS</h1>';
+
+    require_once( get_template_directory() . '/inc/template/sunlight-custom-css.php' );
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

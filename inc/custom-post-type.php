@@ -70,7 +70,8 @@ function sunlight_contact_custom_column($column, $post_id){
             break;
 
         case  'email' :
-            echo 'email addresh';
+            $email = get_post_meta($post_id, '_contact_email_value_key', true);
+            echo $email;
             break;
     }
 }
@@ -112,9 +113,7 @@ function sunlight_save_contact_email_data( $post_id ) {
         return;
     }
 
-    $my_data =  sanitize_text_field( $_POST['sunlight_contact_email_field'] );
+    $metabox_data =  sanitize_text_field( $_POST['sunlight_contact_email_field'] );
 
-    var_dump($my_data);
-
-    update_post_meta($post_id,'_contact_email_value_key',$my_data);
+    update_post_meta($post_id,'_contact_email_value_key',$metabox_data);
 }
