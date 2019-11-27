@@ -44,6 +44,7 @@ add_action( 'admin_enqueue_scripts', 'sunlight_load_admin_script' );
 function sunligt_load_scripts(){
 
     wp_enqueue_style('sunlight_admin', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',  array(), '4.3.1', $media = 'all');
+    wp_enqueue_style('sass-css', get_template_directory_uri().'/css/sunlight_sass.css',  array(), '1.0', $media = 'all');
     wp_enqueue_style('sunlight_css', get_template_directory_uri().'/css/sunlight.css',  array(), '1.0', $media = 'all');
 
     wp_deregister_script('jquery');

@@ -32,6 +32,15 @@
 
     add_theme_support('title-tag');
 
+    // Activate nav menu option
+
+
+    function sunlight_register_nav_menu(){
+        register_nav_menu('main_menu','Add menu for header option');
+    }
+
+    add_action('after_setup_theme','sunlight_register_nav_menu')
+
 
 
 
