@@ -1,3 +1,4 @@
 # Don't add in git list bellow
 node_modules/
 sunlight_sass.css.map
+package-lock.json
