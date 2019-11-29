@@ -53,8 +53,6 @@
         $posted_on = human_time_diff(get_the_time('U'), current_time('timestamp'));
         $categories = get_the_category();
 
-
-        $separator =  ', ';
         $output = '';
 
         if($categories):
@@ -62,19 +60,48 @@
             foreach ($categories as $category) {
 
                 if($output){
-                    $output .=$separator;
+                    $output .= ', ';
                 }
 
                 $output .= '<a href="'.esc_url( get_category_link($category->term_id) ).'" alt="'.esc_attr('View All  Posts in %s', $category->name).'">'.esc_html($category->name).'</a>';
             }
             endif;
 
-        return '<span class="posted-on">  Posted <a href="'.esc_url( get_permalink() ).'"> '.$posted_on.' </a>  ago</span>
+        return '<span class="posted-on">  Posted <a href="'.esc_url( get_permalink() ).'"> '.$posted_on.' </a>  ago</span> /
                 <span class="posted-in"> '. $output .' </span>';
     }
 
+
+
+
     function sunlight_posted_footer(){
-        return 'Tag list & comment list';
+
+        $comments_num = get_comments_number();
+
+        if(comments_open()){
+            if($comments_num == 0){
+                $comments = __('No Comments');
+            }elseif($comments_num>1){
+                $comments = $comments_num . __('Comments');
+            }else{
+                $comments = __('1 Comment');
+            }
+            $comments = '<a href="' . get_comments_link() . '"> ' .$comments. ' <span class="icon-folder-download"></span><a>';
+        }else{
+            $comments = __('Comments are closed');
+        }
+
+
+
+
+        return '<div class="post-footer-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-sm-6"> ' . get_the_tag_list('<div class="tag-list"><span class="icon-profile sunset-tag"></span> ',' ' , '</div>') . ' </div> 
+                            <div class="col-12 col-sm-6"> ' .$comments. '  </div> 
+                        </div> 
+                    </div>
+                 </div>';
     }
 
 
