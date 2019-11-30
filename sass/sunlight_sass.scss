@@ -1,6 +1,58 @@
+/*
+
+@package sunlighttheme
+
+	========================
+		variables
+	========================
+
+
+*/
+
+@import "base/variables";
+@import "base/fonticons";
+@import "base/mixins";
+
+
 .navbar-sunset{
   background: #eee;
   li{
     margin: 5px 10px;
   }
+}
+
+
+
+/*
+
+@package sunlighttheme
+
+	========================
+		Startnadard post format
+	========================
+
+
+*/
+
+article.sunlight-format-image{
+  margin: 20px 0;
+
+    header{
+      position: relative;
+
+      h1{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 5%;
+      }
+
+      .entry-excerpt{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 5%;
+      }
+    }
+
 }
