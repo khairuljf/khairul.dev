@@ -91,9 +91,6 @@
             $comments = __('Comments are closed');
         }
 
-
-
-
         return '<div class="post-footer-container">
                     <div class="container">
                         <div class="row">
@@ -105,6 +102,12 @@
     }
 
 
+
+/**
+ *  ========================
+    Return image url by post_thumbanil or insert image in post/page
+    ========================
+ */
 
 function sunlight_get_attachment(){
 

@@ -15,7 +15,7 @@
 
     <?php if(has_post_thumbnail()): ?>
     <header class="entry-header text-center" style="background-image: url(<?php echo sunlight_get_attachment() ?>);height: 500px;" >
-        <?php the_title('<h1 class="entry-title">','</h1>'); ?>
+        <a href="<?php the_permalink() ?>"><?php the_title('<h1 class="entry-title">','</h1>'); ?></a>
         <div class="entry-meta">
             <?php echo sunlight_posted_meta(); ?>
         </div>
