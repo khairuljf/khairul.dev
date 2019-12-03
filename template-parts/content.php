@@ -19,9 +19,9 @@
     </header>
     <div class="entry-content">
 
-        <?php if(has_post_thumbnail()): ?>
+        <?php if(sunlight_get_attachment()): ?>
             <div class="standard-featured">
-                <img src="<?php the_post_thumbnail_url() ?>" alt="" class="img-fluid">
+                <img src="<?php echo sunlight_get_attachment() ?>" alt="" class="img-fluid">
             </div><!-- .standard-featured -->
         <?php endif; ?>
 
