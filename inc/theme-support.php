@@ -109,21 +109,31 @@
     ========================
  */
 
-function sunlight_get_attachment(){
+function sunlight_get_attachment( $total = 1){
 
     $output = '';
-    if( has_post_thumbnail() ):
+    if( has_post_thumbnail() && $total == 1 ):
         $output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
     else:
+
         $attachments = get_posts( array(
             'post_type' => 'attachment',
-            'posts_per_page' => 1,
+            'posts_per_page' => $total,
             'post_parent' => get_the_ID()
         ) );
-        if( $attachments ):
+
+
+        if( $attachments && $total == 1  ):
+
             foreach ( $attachments as $attachment ):
                 $output = wp_get_attachment_url( $attachment->ID );
             endforeach;
+
+            elseif ($attachments && $total > 1):
+
+            $output = $attachments;
+
+
         endif;
 
         wp_reset_postdata();
