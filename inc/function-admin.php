@@ -119,7 +119,7 @@ function sunlight_custom_css_cb(){
 //Theme Support Setting fields
 function theme_post_format(){
     $options = get_option( 'post_format' );
-    $formats = array('aside', 'gallery', 'link', 'image', 'qoute', 'status', 'video', 'audio', 'chat');
+    $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
     $output='';
     foreach ($formats as $format ) {
         $checked = ( @$options[$format] ? 'checked' : '' );

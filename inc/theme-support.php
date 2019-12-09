@@ -12,6 +12,7 @@
 
 	$options = get_option( 'post_format' );
 
+
 	foreach ($options as $option=>$val){
         $output[] = $option;
     }
@@ -155,5 +156,16 @@ function sunlight_get_embeded_media( $type = array() ){
     endif;
 
     return $output;
+}
+
+
+function sunlight_grab_url(){
+
+    if( !preg_match('/<a\s[^>]*?href=[\'"](.+?)[\'"]/i',get_the_content(),$links)){
+            return false;
+    }
+
+    return esc_url_raw($links[1]);
+
 }
 
