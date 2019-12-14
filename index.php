@@ -2,11 +2,11 @@
 
 
 <div id="primary" class="content-area">
-    <main id="main" class="site-main">
+    <main id="main" class="site-main p-3">
 
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 sunlight-post-container">
                     <?php
 
                     if( have_posts() ):
@@ -21,6 +21,12 @@
                 </div>
             </div>
         </div><!-- .container -->
+
+        <div class="container">
+            <div class="col-12 text-center">
+                <a href="#" onclick="" class="btn btn-lg btn-success load-more-post" data-page="1" data-url="<?php echo admin_url('admin-ajax.php') ?>">Load More</a>
+            </div>
+        </div>
 
     </main>
 </div> <!-- #primary -->
