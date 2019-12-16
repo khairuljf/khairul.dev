@@ -1,7 +1,7 @@
 
 $(document).ready(function($){
 
-    $(document).on('click', '.load-more-post', function(e){
+    $(document).on('click', '.load-more-post:not(.loading)', function(e){
         e.preventDefault();
 
         // Get value from loadmore button
@@ -10,7 +10,9 @@ $(document).ready(function($){
         var newpage = page+1;
         var ajaxurl = that.data('url');
 
-        console.log(page);
+        // add loading class in the button
+        that.addClass('loading');
+        that.find('.icon-spinner6').addClass('spin');
 
         $.ajax({
 
@@ -26,8 +28,16 @@ $(document).ready(function($){
 
             success: function(response){
                 //console.log(response)
-                that.data('page',newpage);
+                that.data('page', newpage);
                 $('.sunlight-post-container').append( response );
+
+                setTimeout(function(){
+
+                    that.removeClass('loading');
+                    that.find('.load-icon').removeClass('spin');
+
+                }, 1000)
+
             }
 
 

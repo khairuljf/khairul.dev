@@ -80,3 +80,43 @@ Video post format
 .sunlight-format-video{
 
 }
+
+/*
+
+ajax loading option
+*/
+
+.load-more-post{
+  opacity: .5;
+  font-weight: 700;
+  &:hover,
+  &.loading{
+    opacity: 1;
+  }
+  &.loading{
+    pointer-events: none;
+    .text{
+      display: none;
+    }
+  }
+  span{
+    display: block;
+  }
+
+  .load-icon{
+
+  }
+
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to {transform: rotate(360deg); }
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
